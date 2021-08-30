@@ -10,8 +10,6 @@
         android:id="@+id/Input1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginLeft="3dp"
         android:layout_marginBottom="18dp"
         android:ems="10"
         android:hint="Input 1"
@@ -19,7 +17,9 @@
         android:phoneNumber="false"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/Input2"
-        app:layout_constraintStart_toStartOf="@+id/Input2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/Add"
@@ -27,19 +27,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginLeft="18dp"
+        android:layout_marginBottom="28dp"
         android:onClick="sum"
         android:text="Add"
         android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Subtract"
+        app:layout_constraintBottom_toTopOf="@+id/Multiply"
         app:layout_constraintEnd_toStartOf="@+id/Subtract"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
+        android:layout_marginBottom="58dp"
         android:text="Calculator"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/Input1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,16 +52,18 @@
         android:id="@+id/Input2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="238dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="21dp"
         android:ems="10"
         android:hint="Input 2"
         android:inputType="number"
         android:minHeight="48dp"
         android:phoneNumber="true"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/output"
+        app:layout_constraintEnd_toEndOf="@+id/Input1"
+        app:layout_constraintTop_toBottomOf="@+id/Input1" />
 
     <Button
         android:id="@+id/Subtract"
@@ -65,26 +71,29 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="288dp"
+        android:layout_marginBottom="30dp"
         android:onClick="subtract"
         android:text="Subtract"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/Divide"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Add" />
+        app:layout_constraintStart_toEndOf="@+id/Add"
+        app:layout_constraintTop_toBottomOf="@+id/output" />
 
     <Button
         android:id="@+id/Divide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="74dp"
-        android:layout_marginLeft="74dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="36dp"
         android:onClick="divide"
         android:text="Divide"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/Add"
-        app:layout_constraintTop_toBottomOf="@+id/Add" />
+        app:layout_constraintBottom_toTopOf="@+id/Remainder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Multiply"
+        app:layout_constraintTop_toBottomOf="@+id/Subtract" />
 
     <Button
         android:id="@+id/Average"
@@ -92,15 +101,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="35dp"
         android:layout_marginEnd="2dp"
         android:layout_marginRight="2dp"
         android:onClick="average"
         android:text="@string/average"
         android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/Remainder"
         app:layout_constraintEnd_toStartOf="@+id/Remainder"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Divide" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/Remainder"
@@ -113,7 +121,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Average"
-        app:layout_constraintTop_toBottomOf="@+id/output" />
+        app:layout_constraintTop_toBottomOf="@+id/Divide" />
 
     <TextView
         android:id="@+id/output"
@@ -121,16 +129,27 @@
         android:layout_height="0dp"
         android:layout_marginStart="68dp"
         android:layout_marginLeft="68dp"
-        android:layout_marginTop="312dp"
         android:layout_marginEnd="68dp"
         android:layout_marginRight="68dp"
-        android:layout_marginBottom="215dp"
+        android:layout_marginBottom="53dp"
         android:hint="Result"
         android:textSize="20sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/Remainder"
+        app:layout_constraintBottom_toTopOf="@+id/Subtract"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Input2" />
+
+    <Button
+        android:id="@+id/Multiply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:onClick="multiply"
+        android:text="Multiply"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/Divide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Subtract" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
